@@ -1,5 +1,6 @@
 const express = require('express');
-const defaultResponse = require('./responses/defaultResponse');
+const callCityFromCoords = require('./routes/callCityFromCoords');
+const callDefaultRequest = require('./routes/callDefaultRequest');
 const app = express();
 
 app.use(express.json());
@@ -7,7 +8,7 @@ app.use(express.json());
 const port = 3000;
 
 app.get("/", (req, res) => {
-    res.send(defaultResponse);
+    res.send(callDefaultRequest);
 });
 
 app.get("/name", (req, res) => {
@@ -15,7 +16,11 @@ app.get("/name", (req, res) => {
 });
 
 app.get("/coords", (req, res) => {
-  //chama a rota pelas coordendadas
+  const coords = req.body;
+  callCityFromCoords(coords.lat, coords.lon, function(response){
+    res.write(JSON.stringify(response));
+    res.end();
+  });
 });
 
 app.listen(port, () => {
