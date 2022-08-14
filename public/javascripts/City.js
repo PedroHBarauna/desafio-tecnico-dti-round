@@ -1,8 +1,12 @@
 const Status = require("./Status");
 
 module.exports = class City {
-    constructor(id, name, temp, humidity){
+    constructor(id, lat, lon, name, temp, humidity){
         this.id = id;
+        this.coords = {
+            "lat": lat,
+            "lon": lon,
+        }
         this.name = name;
         this.temp = temp;
         this.humidity = humidity;
