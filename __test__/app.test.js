@@ -8,6 +8,7 @@ describe("City.js", () =>{
         expect(city.name).toEqual('São Paulo');
         expect(city.temp).toEqual(32);
         expect(city.humidity).toEqual(10);
+        expect(city.status).toEqual("Umidade baixa");
     });
 });
 
