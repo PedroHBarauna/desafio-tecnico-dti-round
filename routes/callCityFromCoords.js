@@ -9,8 +9,13 @@ const callCityFromCoords = (lat, lon, callback) => {
         if(err){
             return callback(err);
         }
-        const city = new City(body.id, body.coord.lat, body.coord.lon, body.name, body.main.temp, body.main.humidity);
-        return callback(city);
+        if(body.cod!=200){
+            return callback(body);
+        }
+        else{
+            const city = new City(body.id, body.coord.lat, body.coord.lon, body.name, body.main.temp, body.main.humidity);
+            return callback(city);
+        }
     });
 }
 
