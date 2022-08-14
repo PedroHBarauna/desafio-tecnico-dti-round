@@ -1,5 +1,6 @@
 const express = require('express');
 const callCityFromCoords = require('./routes/callCityFromCoords');
+const callCityFromName = require('./routes/callCityFromName');
 const callDefaultRequest = require('./routes/callDefaultRequest');
 const app = express();
 
@@ -12,12 +13,16 @@ app.get("/", (req, res) => {
 });
 
 app.get("/name", (req, res) => {
-  //chama a rota por nome da cidade
+  const city = req.body;
+  callCityFromName(city.name, function(response){
+    res.write(JSON.stringify(response));
+    res.end();
+  });
 });
 
 app.get("/coords", (req, res) => {
-  const coords = req.body;
-  callCityFromCoords(coords.lat, coords.lon, function(response){
+  const city = req.body;
+  callCityFromCoords(city.lat, city.lon, function(response){
     res.write(JSON.stringify(response));
     res.end();
   });
