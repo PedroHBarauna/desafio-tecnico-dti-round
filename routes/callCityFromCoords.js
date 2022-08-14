@@ -9,7 +9,7 @@ const callCityFromCoords = (lat, lon, callback) => {
         if(err){
             return callback(err);
         }
-        const city = new City(body.id, body.coords.lat, body.coords.lon, body.name, body.main.temp, body.main.humidity);
+        const city = new City(body.id, body.coord.lat, body.coord.lon, body.name, body.main.temp, body.main.humidity);
         return callback(city);
     });
 }
