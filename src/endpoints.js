@@ -12,7 +12,6 @@ module.exports = function (app){
     const name = req.params.name;
     callCityFromName(name, function(response){
         res.write(JSON.stringify(response));
-        res.status(response.cod);
         res.end();
     });
     });
@@ -22,7 +21,6 @@ module.exports = function (app){
     const lon = req.params.lon;
     callCityFromCoords(lat, lon, function(response){
         res.write(JSON.stringify(response));
-        res.status(response.cod);
         res.end();
     });
 
