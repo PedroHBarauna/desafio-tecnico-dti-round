@@ -2,7 +2,7 @@ import City from '../public/javascripts/City'
 import Status from '../public/javascripts/Status';
 
 describe("City.js", () =>{
-    const city = new City(1, -46.6361, -23.5475, 'São Paulo', 32, 10);
+    const city = new City(1, -46.6361, -23.5475, 'São Paulo', 32, 10, 200);
     it("create the class City", () =>{
         expect(city.id).toEqual(1);
         expect(city.coords.lat).toEqual(-46.6361);
@@ -11,6 +11,7 @@ describe("City.js", () =>{
         expect(city.temp).toEqual(32);
         expect(city.humidity).toEqual(10);
         expect(city.status).toEqual("Umidade baixa");
+        expect(city.cod).toEqual(200);
     });
 });
 
