@@ -1,6 +1,6 @@
-const callCityFromCoords = require('../routes/callCityFromCoords');
-const callCityFromName = require('../routes/callCityFromName');
-const callDefaultRequest = require('../routes/callDefaultRequest');
+const callCityFromCoords = require('../calls/callCityFromCoords');
+const callCityFromName = require('../calls/callCityFromName');
+const callDefaultRequest = require('../calls/callDefaultRequest');
 
 module.exports = function (app){
 
@@ -8,19 +8,23 @@ module.exports = function (app){
         res.send(callDefaultRequest);
     });
 
-    app.get("/name", (req, res) => {
-    const city = req.body;
-    callCityFromName(city.name, function(response){
+    app.get("/name/:name", (req, res) => {
+    const name = req.params.name;
+    callCityFromName(name, function(response){
         res.write(JSON.stringify(response));
+        res.status(response.cod);
         res.end();
     });
     });
 
-    app.get("/coords", (req, res) => {
-    const city = req.body;
-    callCityFromCoords(city.lat, city.lon, function(response){
+    app.get("/coords/:lat/:lon", (req, res) => {
+    const lat = req.params.lat;
+    const lon = req.params.lon;
+    callCityFromCoords(lat, lon, function(response){
         res.write(JSON.stringify(response));
+        res.status(response.cod);
         res.end();
     });
+
     })
 }
