@@ -6,6 +6,9 @@ const unit = "metric";
 const callCityFromCoords = (lat, lon, callback) => {
     _EXTERNAL_URL_WITH_INFOS = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`
     request(_EXTERNAL_URL_WITH_INFOS, {json:true}, (err, res, body)=> {
+        if(err){
+            return callback(err);
+        }
         if(body.cod!=200){
             return callback(body);
         }
