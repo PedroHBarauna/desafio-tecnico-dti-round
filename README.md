@@ -1,6 +1,8 @@
 # Desafio Técnico DTI Digital - Round (Node.js + Express + Docker)
 
-Criação de um micro-serviço para visualização da temperatura atual de uma cidade, além de um status de alerta, com base na API OpenWeatherMap.
+Criação de um micro-serviço para visualização da temperatura atual de uma cidade, além de um status de alerta, com base na API OpenWeatherMap. É utilizado como linguagem padrão o Inglês, porém é possível de alteração.
+
+Existem três endpoints, um padrão com links pessoais e documentação, o endpoint name recebe como parâmetro o nome da cidade e o endpoint coords, que recebe como parâmetro a latitude e a longitude. Ambos nome e coords retornam a classe com as informações requisitadas
 
 ## Instalação utilizando Docker
 
