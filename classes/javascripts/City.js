@@ -1,7 +1,5 @@
-const Status = require("./Status");
-
 module.exports = class City {
-    constructor(id, lat, lon, name, temp, humidity, cod){
+    constructor(id, lat, lon, name, temp, humidity, status, cod){
         this.id = id;
         this.coords = {
             "lat": lat,
@@ -10,7 +8,7 @@ module.exports = class City {
         this.name = name;
         this.temp = temp;
         this.humidity = humidity;
-        this.status = new Status(this.temp, this.humidity).build().getStatus();
+        this.status = status;
         this.cod = cod;
     }
 }

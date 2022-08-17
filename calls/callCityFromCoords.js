@@ -1,5 +1,6 @@
 const request = require('request');
 const City = require('../classes/javascripts/City');
+const Status = require('../classes/javascripts/Status')
 const apiKey = "b5e93b808524f0baa240d0dbc59c991c";
 const unit = "metric";
 const lang = "en";
@@ -11,7 +12,9 @@ const callCityFromCoords = (lat, lon, callback) => {
             return callback(body);
         }
         else{
-            const city = new City(body.id, body.coord.lat, body.coord.lon, body.name, body.main.temp, body.main.humidity, body.cod);
+            const status = new Status(body.main.temp, body.main.humidity).build().getStatus();
+            console.log()
+            const city = new City(body.id, body.coord.lat, body.coord.lon, body.name, body.main.temp, body.main.humidity, status, body.cod);
             return callback(city);
         }
     });
