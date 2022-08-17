@@ -1,8 +1,9 @@
-import City from '../public/javascripts/City'
-import Status from '../public/javascripts/Status';
+import City from '../classes/javascripts/City'
+import Status from '../classes/javascripts/Status';
 
 describe("City.js", () =>{
-    const city = new City(1, -46.6361, -23.5475, 'São Paulo', 32, 10, 200);
+    const status = new Status(32, 10).build().getStatus();
+    const city = new City(1, -46.6361, -23.5475, 'São Paulo', 32, 10, status, 200);
     it("create the class City", () =>{
         expect(city.id).toEqual(1);
         expect(city.coords.lat).toEqual(-46.6361);
