@@ -22,8 +22,7 @@ module.exports = class Status {
         if(this.temp<10){
             return new StatusIntenseCold();
         }
-        else{
-            return new StatusUnknow();
-        }
+        
+        return new StatusUnknow();
     }
 }
